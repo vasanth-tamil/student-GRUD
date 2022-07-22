@@ -1,0 +1,65 @@
+{% extends "basic_template.html" %}
+
+{% block title %}sqlalchemy students datas{% endblock %}
+{% block head %}
+	<style type="text/css">
+		.btn:focus{
+			box-shadow: none !important;
+		}
+	</style>
+{% endblock %}
+{% block body %}
+	<div class="container mt-4">
+		<div class="row">
+			<div class="offset-1 col-md-10 text-center">
+				<h3 class="mb-4">STUDENTS LIST</h3>
+
+				<table class="table table-bordered">
+					<thead class="table-success">
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Address</th>
+							<th>Course</th>
+							<th>Options</th>
+						</tr>
+					</thead>
+
+					<tbody>
+					{% if not datas %}
+						<tr>
+							<td colspan="5">
+								<p>datas not found</p>
+								<a href="/" type="button" class="btn btn-primary">ADD DATA</a>
+							</td>
+						</tr>
+					{% else %}
+						{% for student in datas %}
+							<tr class="align-middle">
+								<td>{{ student.Id }}</td>
+								<td>{{ student.Name }}</td>
+								<td>{{ student.Address }}</td>
+								<td>{{ student.Course }}</td>
+								<td>
+									<a href="/editData/{{ student.Id }}" class="btn btn-primary">
+										<i class="fas fa-edit"></i>
+									</a>
+									<a href="/deleteData/{{ student.Id }}" class="btn btn-danger">
+										<i class="fas fa-trash"></i>
+									</a>
+								</td>
+							</tr>
+						{% endfor %}
+					{% endif %}
+					</tbody>
+				</table>
+
+				<div class="row">
+					<div class="offset-6 col-md-6">
+						<a href="/" class="btn btn-dark float-end"><i class="fa fa-user"></i> ADD NEW DATA</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

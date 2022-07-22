@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bootstrap 5 Link Flask</title>
+	<meta chaset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}"/>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='all.min.css' )}}"/>
+	<style type="text/css">
+		.btn:focus {
+  			outline: none;
+  			box-shadow: none;
+		}
+		.btn{
+			box-shadow: none !important;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="col-md-12 text-center p-5">
+			<Button class="btn btn-primary shadown-none">
+				<i class="fas fa-thumbs-up"></i>
+				Likes <span class="badge bg-dark">10</span>
+			</Button>
+		</div>
+	</div>
+</body>
+<footer>
+	<script src="{{ url_for('static', filename='bootstrap.min.js') }}"></script>
+</footer>
+</html>

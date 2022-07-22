@@ -1,0 +1,52 @@
+{% extends "basic_template.html" %}
+
+{% block title %}sqlalchemy update{% endblock %}
+
+{% block head %}
+	<style type="text/css">
+		input:focus, a:focus{
+			box-shadow: none !important;
+		}
+	</style>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="offset-4 col-md-4">
+			<h3 class="col-md-12 text-center mt-5">UPDATE Datas</h3>
+			<hr />
+			<form action="/updateDatas" method="POST">
+				<input type="text" name="ID" value="{{ data.Id }}" hidden />
+
+				<label class="input-label mt-2">STUDENT NAME</label>
+				<input type="text" name="student_name" class="form-control mt-2 mb-2" value="{{ data.Name }}" />
+
+				<label class="input-label">ADDRESS</label>
+				<input type="text" name="address" class="form-control mt-2 mb-2" value="{{ data.Address }}" />
+
+				<label class="input-label">COURSE</label>
+				<input type="text" name="course" class="form-control mt-2 mb-2" value="{{ data.Course }}" />
+
+				<input type="submit" class="btn btn-primary mt-3" value="UPDATE DATA" />
+				<a href="/showDatas" class="btn btn-primary mt-3">CANCEL</a>
+			</form>
+
+			{% with messages = get_flashed_messages(with_categories=True) %}
+				{% if messages %}
+
+					{% for categorie, message in messages %}
+						{% if categorie == "success" %}
+							<div class="mt-3 alert alert-success alert-dismissable">
+								<b><i class="fa fa-check-circle"></i> {{ message }}</b>
+							</div>
+						{% elif categorie == "error" %}
+							<div class="mt-3 alert alert-danger alert-dismissable fade show">
+								<b><i class="fa fa-times-circle"></i> {{ message }}</b>
+							</div>
+						{% endif %}
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</div>
+	</div>
+{% endblock %}
